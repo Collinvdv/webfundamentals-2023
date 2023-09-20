@@ -1,0 +1,8 @@
+body {
+    background-color: grey;
+}
+
+#car1, #car2 {
+    width: 150px;
+    transform: scaleX(-1);
+}
