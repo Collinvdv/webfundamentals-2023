@@ -1,0 +1,16 @@
+body {
+    background-color: grey;
+}
+
+#car1, #car2 {
+    width: 150px;
+    transform: scaleX(-1);
+}
+
+#finish-line {
+    position: absolute;
+    right: 500px;
+    height: 100vh;
+    width: 5px;
+    background-color: black;
+}
