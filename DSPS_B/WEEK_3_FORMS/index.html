@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>
+            Create our tinder profile
+        </h1>
+
+        <!-- 
+            User table 
+            --
+            PK INT ID 
+            VARCHAR EMAIL 
+            VARCHAR FIRSTNAME
+            VARCHAR PASSWORD
+            INT HEIGHT_IN_CM
+            BLOB PROFILE_PIC
+            CHAR(1) GENDER
+            CHAR(1) PREF_GENDER
+            VARCHAR DESCRIPTION
+        -->
+
+        <form action="register.php">
+            <!-- Firstname -->
+            <div>
+                <label for="field-firstname">
+                    Firstname
+                </label>
+                <br>
+                <input type="text" placeholder="Give me your firstname" id="field-firstname" name="firstname" />
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="field-email">
+                    Email
+                </label>
+                <br>
+                <input type="email" placeholder="Give me your email" id="field-email" name="email" required="true"/>
+            </div>
+
+            <!-- Height  -->
+            <div>
+                <label for="field-height">
+                    Height in cm
+                </label>
+                <br>
+                <input type="number" min="1" max="400" placeholder="Give me your height in cm" id="field-height" name="height"/>
+            </div>
+
+            <!-- Password  -->
+            <div>
+                <label for="field-password">
+                    Password
+                </label>
+                <br>
+                <input type="password" placeholder="Give me your password" id="field-password" name="password"/>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit">
+                Create profile
+            </button>
+        </form>
+    </body>
+</html>

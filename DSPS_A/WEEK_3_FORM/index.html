@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>
+            Register page
+        </h1>
+
+        <form action="./register.php" method="GET">
+            <!-- Username -->
+            <div>
+                <label for="field-username">
+                    Username <sup>*</sup>
+                </label> <br>
+                <input type="text" placeholder="Fill in your username" id="field-username" name="user" value="collin" required="true">
+            </div>
+
+            <!-- Password -->
+            <div>
+                <label for="field-pass">
+                    Password <sup>*</sup>
+                </label> <br>
+                <input type="password" placeholder="Fill in your pass" id="field-pass" name="password" value="collintje" required>
+            </div>
+
+            <!-- E-mail -->
+            <div>
+                <label for="field-mail">
+                    E-mail <sup>*</sup>
+                </label> <br>
+                <input type="email" placeholder="Fill in your mail" id="field-mail" name="mail">
+            </div>
+
+            <!-- DOB -->
+            <div>
+                <label for="field-dob">
+                    DoB<sup>*</sup>
+                </label> <br>
+                <input type="date" placeholder="Fill in your dob" id="field-dob" name="dob">
+            </div>
+
+            <!-- Datetime -->
+            <div>
+                <label for="field-datetime">
+                    Datetime<sup>*</sup>
+                </label> <br>
+                <input type="datetime-local" placeholder="Fill in your dob" id="field-datetime" name="datetime">
+            </div>
+
+            <!-- Amount of ex girlsfriends -->
+            <div>
+                <label for="field-amount">
+                    Amount of ex-partners <sup>*</sup>
+                </label> <br>
+                <input type="number" min="0" max="100" placeholder="Fill in your amount of ex-partners" id="field-amount" name="amount">
+            </div>
+
+            <!-- Profile picture -->
+            <div>
+                <label for="field-pic">
+                    Profile picture <sup>*</sup>
+                </label> <br>
+                <input type="file" placeholder="Add your profile pic" id="field-pic" name="pic" multiple="true">
+            </div>
+
+            <!-- Gender -->
+            <div>
+                <input type="radio" name="gender" value="female" id="select-f" >
+                <label for="select-f">
+                    Female
+                </label>
+                <br>
+                <input type="radio" name="gender" value="male" id="select-m" checked="true">
+                <label for="select-m">
+                    Male
+                </label>
+                <br>
+                <input type="radio" name="gender" value="x" id="select-x">
+                <label for="select-x">
+                    X
+                </label>
+            </div>
+
+            <!-- Gender -->
+            <div>
+                <input type="checkbox" name="pgender" value="female" id="p-select-f" >
+                <label for="p-select-f">
+                    Female
+                </label>
+                <br>
+                <input type="checkbox" name="pgender" value="male" id="p-select-m" checked="true">
+                <label for="p-select-m">
+                    Male
+                </label>
+                <br>
+                <input type="checkbox" name="pgender" value="x" id="p-select-x">
+                <label for="p-select-x">
+                    X
+                </label>
+            </div>
+
+            <!-- Dropdown -->
+            <div>
+                <label for="most-difficult-course">
+                    What is the most difficult course?
+                </label>
+                <select id="most-difficult-course">
+                    <option value="db"> DB</option>
+                    <option value="wf"> WEB FUND</option>
+                    <option value="pf" selected> PROG FUND</option>
+                </select>
+            </div>
+
+            <br>
+            <label for="input-descr">
+                Description
+            </label>
+            <br>
+            <textarea name="description" id="input-descr" rows="10" cols="100"></textarea>
+
+
+            <!-- Register button -->
+            <div>
+                <button type="submit">
+                    Register account
+                </button>
+
+                <!-- <input type="submit" value="Register user"> -->
+            </div>
+        </form>
+    </body>
+</html>
