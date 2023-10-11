@@ -6,9 +6,11 @@
         <title>Document</title>
     </head>
     <body>
-        <h1>
-            Create our tinder profile
-        </h1>
+        <div>
+        </div>
+            <h1>
+                Create our tinder profile
+            </h1>
 
         <!-- 
             User table 
@@ -24,7 +26,7 @@
             VARCHAR DESCRIPTION
         -->
 
-        <form action="register.php">
+        <form action="register.php" method="POST">
             <!-- Firstname -->
             <div>
                 <label for="field-firstname">
@@ -40,7 +42,7 @@
                     Email
                 </label>
                 <br>
-                <input type="email" placeholder="Give me your email" id="field-email" name="email" required="true"/>
+                <input type="email" value="collin.vandervorst@thomasmore.be" placeholder="Give me your email" id="field-email" name="email" required="true"/>
             </div>
 
             <!-- Height  -->
@@ -60,6 +62,57 @@
                 <br>
                 <input type="password" placeholder="Give me your password" id="field-password" name="password"/>
             </div>
+
+            <!-- DoB  -->
+            <div>
+                <label for="field-dob">
+                    DoB
+                </label>
+                <br>
+                <input type="date" placeholder="Give me your dob" id="field-dob" name="dob"/>
+            </div>
+
+            <!-- ProfilePic  -->
+            <div>
+                <label for="field-profile-pic">
+                    Profile picture
+                </label>
+                <br>
+                <input type="file" multiple placeholder="Give me your profile picture" id="field-profile-pic" name="profile-pic"/>
+            </div>
+
+            <!-- Gender -->
+            <div>
+                <input type="radio" id="input-gender-male" name="gender" value="male" >
+                <label for="input-gender-male"> Male </label> <br>
+                <input type="radio" id="input-gender-female" name="gender" value="female" checked="true">
+                <label for="input-gender-female"> Female </label> <br>
+                <input type="radio" id="input-gender-x" name="gender" value="x">
+                <label for="input-gender-x"> x </label> <br>
+            </div>
+
+            <!-- Dropdown -->
+            <label for="input-gender-2">
+                Gender 2 
+            </label>
+            <select name="gender2" id="input-gender-2">
+                <option value="female"> Female </option>
+                <option value="male"> Male </option>
+                <option value="x" selected> x </option>
+            </select>
+
+            <!-- Pref gender -->
+            <div>
+                <input type="checkbox" id="input-prefgender-male" name="prefgender" value="male" >
+                <label for="input-prefgender-male"> Male </label> <br>
+                <input type="checkbox" id="input-prefgender-female" name="prefgender" value="female" checked="true">
+                <label for="input-prefgender-female"> Female </label> <br>
+                <input type="checkbox" id="input-prefgender-x" name="prefgender" value="x">
+                <label for="input-prefgender-x"> x </label> <br>
+            </div>
+
+            <!-- Description -->
+            <textarea name="description" rows="10" cols="100"></textarea>
 
             <!-- Submit button -->
             <button type="submit">
