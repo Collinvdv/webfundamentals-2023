@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                background-color: orange;
+            }
+
+            .face {
+                width: 300px;
+                height: 300px;
+
+                background-color: yellow;
+                border-radius: 100%;
+
+                border: 3px solid black;
+
+                margin: 40px;
+
+                position: relative;
+                display: inline-block;
+            }
+
+            .eye {
+                width: 50px;
+                height: 50px;
+                background-color: white;
+                border: 3px solid black;
+                border-radius: 100%;
+            }
+
+            .eye-ball {
+                width: 30px;
+                height: 30px;
+                background-color: blue;
+                border-radius: 100%;
+                
+                z-index: 99;
+                position:absolute;
+            }
+
+            .eye-ball-left {
+                position: absolute;
+                top: 60px;
+                left: 60px;
+            }
+
+            .eye-left {
+                position: absolute;
+                top: 50px;
+                left: 50px;
+            }
+            .eye-right {
+                position: absolute;
+                top: 85px;
+                left: 110px;
+            }
+
+            .mouth {
+                width: 30px;
+                height: 30px;
+
+                border-radius: 100%;
+                border: 3px solid black;
+                background-color: tomato;
+
+                position: absolute;
+                top: 130px;
+                left: 50px;
+            }
+
+            .face:hover {
+                background-color: red;
+            }
+
+            .face:hover .eye {
+                background-color: black;
+            }
+
+            .face:hover .eye.eye-right {
+                background-color: blue;
+            }
+
+            @media screen and (max-width: 600px) {
+                body {
+                    background-color: red;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="face">
+            <div class="eye-ball eye-ball-left"></div>
+            <div class="eye eye-left"></div>
+            <div class="eye eye-right"></div>
+            <div class="mouth"></div>
+        </div>
+
+        <div class="face">
+            <div class="eye eye-left"></div>
+            <div class="eye eye-right"></div>
+            <div class="mouth"></div>
+        </div>
+
+        <div class="face">
+            <div class="eye eye-left"></div>
+            <div class="eye eye-right"></div>
+            <div class="mouth"></div>
+        </div>
+
+        <div class="face">
+            <div class="eye eye-left"></div>
+            <div class="eye eye-right"></div>
+            <div class="mouth"></div>
+        </div>
+
+        <div class="face">
+            <div class="eye eye-left"></div>
+            <div class="eye eye-right"></div>
+            <div class="mouth"></div>
+        </div>
+    </body>
+</html>
