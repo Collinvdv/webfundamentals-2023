@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .face {
+                width: 200px;
+                height: 200px;
+                background-color: yellow;
+                border-radius: 100%;
+                border: 2px solid black;
+
+                position: relative;
+            }
+
+            .eye {
+                width: 30px;
+                height: 30px;
+                background-color: black;
+                border-radius: 100%;
+
+                position: absolute;
+            }
+
+            .eye-left {
+                left: 40px;
+                top: 40px;
+            }
+
+            .eye-right {
+                left: 80px;
+                top: 60px;
+            }
+
+            .mouth {
+                width: 20px;
+                height: 20px;
+                background-color: red;
+                border: 2px solid black;
+                border-radius: 100%;
+                position: absolute;
+                top: 80px;
+                left: 50px;
+            }
+
+            .face:hover {
+                background-color: lightcyan;
+            }
+
+            .face:hover .mouth {
+                background-color: blue;
+            }
+
+            .face.brown {
+                background-color: brown;
+            }
+
+            .face.brown .eye {
+                background-color: white;
+            }
+
+            .eye-ball {
+                width: 15px;
+                height: 15px;
+                background-color: blue;
+
+                position: absolute;
+
+                left: 45px;
+                top: 45px;
+            }
+
+            @media screen and (max-width : 600px) {
+                body {
+                    background-color: lightsalmon;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Smiley
+        </h1>
+
+        <div class="face">
+            <div class="eye-ball"></div>
+            <div class="eye eye-left"></div>
+            <div class="eye eye-right"></div>
+            <div class="mouth"></div>
+        </div>
+
+        <div class="face brown">
+            <div class="eye eye-left"></div>
+            <div class="eye eye-right"></div>
+            <div class="mouth"></div>
+        </div>
+        <!-- 
+            .face; width: 200px, height 200px; background-color yellow
+            border-radius: 100%;
+         -->
+    </body>
+</html>

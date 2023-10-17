@@ -1,0 +1,45 @@
+body {
+    background-color: pink;
+}
+
+.heading {
+    color: brown;
+}
+
+/* 
+    Typography colors
+*/
+h1, h2, h3 { 
+    color: blue;
+    text-decoration: underline;
+}
+
+.heading{
+    color: aqua;
+    color: rgb(255, 0, 255);
+    color: #22aa33;
+}
+
+.profile-picture {
+    background-color: green;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+
+    border: 3px dashed white;
+    background-image: url('../img/profile-pic.jpeg');
+    background-position: top center;
+    background-size: cover;
+}
+
+h1 {
+    font-size: 32px;
+    font-style: italic;
+    font-weight: bold;
+
+    font-family: 'Pixelify Sans', 'Arial', sans-serif;
+}
