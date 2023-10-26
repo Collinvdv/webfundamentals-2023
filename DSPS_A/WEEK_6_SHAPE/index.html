@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .circle {
+                height: 50px;
+                width: 50px;
+                background-color: green;
+                border-radius: 100%;
+            }
+
+            .circleBlue {
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Circle transformation
+        </h1>
+
+        <label for="inputHeight"> Height </label>
+        <input type="number" id="inputHeight" value="50">
+
+        <button id="btnChangeColor">
+            Make it blue
+        </button>
+
+        <hr>
+
+        <div class="circle">
+        </div>
+        <div class="circle">
+        </div>
+        <div class="circle">
+        </div>
+
+        <script>
+            var circleEls = document.querySelectorAll(".circle");
+
+            // Change height 
+            var inputHeight = document.querySelector("#inputHeight");
+            inputHeight.addEventListener("change", function() {
+                for (var i = 0 ; i < circleEls.length; i++) {
+                    circleEls[i].style.height = inputHeight.value  + "px";
+                    circleEls[i].style.width = inputHeight.value  + "px";
+
+                }
+            });
+
+            // Btn change 
+            var btnChangeColor = document.querySelector("#btnChangeColor");
+            
+            btnChangeColor.addEventListener("click", function() {
+                for (var i = 0 ; i < circleEls.length; i++) {
+                    // circleEls[i].style.backgroundColor = "blue";
+
+                    circleEls[i].classList.add("circleBlue");
+                }
+            });
+        </script>
+    </body>
+</html>
