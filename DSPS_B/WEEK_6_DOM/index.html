@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1 id="js-title">
+            DOM
+        </h1>
+
+        <button id="js-btn1" class="js-btn">
+            Button 1
+        </button>
+
+        <button id="js-btn2" class="js-btn">
+            Button 2
+        </button>
+
+        <script>
+            var titleEl = document.querySelector("#js-title");
+            // Button 1
+            var button1El = document.querySelector("#js-btn1");
+
+            button1El.addEventListener("click", function() {
+                titleEl.innerHTML = "You clicked button 1";
+            });
+
+            // Button 2
+            var button2El = document.querySelector("#js-btn2");
+
+            button2El.addEventListener("click", function() {
+                titleEl.innerHTML = "You clicked button 2";
+            });
+        </script>
+    </body>
+</html>

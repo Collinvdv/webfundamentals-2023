@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>
+            Calculator 
+            <span id="js-result">
+                0
+            </span>
+        </h1>
+
+        
+
+        <button id="js-btn-add">
+            Add 1
+        </button> 
+
+        <button id="js-btn-minus">
+            Minus 1
+        </button>
+
+        <script>
+            var result = 0;
+            var titleEl = document.querySelector("#js-result");
+            var btnAddEl = document.querySelector("#js-btn-add");
+            var btnMinusEl = document.querySelector("#js-btn-minus");
+
+            btnAddEl.addEventListener("click", function() {
+                if (result % 2 == 0) {
+                    document.querySelector("body").style.backgroundColor = "blue";
+                } else {
+                    document.querySelector("body").style.backgroundColor = "green";
+                }
+                result++;
+                titleEl.innerHTML = result;
+            });
+
+            btnMinusEl.addEventListener("click", function() {
+                if (result > 0) {
+                    if (result % 2 == 0) {
+                        document.querySelector("body").style.backgroundColor = "blue";
+                    } else {
+                        document.querySelector("body").style.backgroundColor = "green";
+                    }
+                    result--;
+                    titleEl.innerHTML = result;
+                }
+            });
+ 
+            // .querySelector 
+            // .innerHTML
+            // .addEventListener("click", function() {
+            // })
+        </script>
+    </body>
+</html>
