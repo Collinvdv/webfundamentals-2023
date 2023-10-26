@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .circle {
+                width: 50px;
+                height: 50px;
+                border-radius: 100%;
+                background-color: orange;
+            }
+
+            .circleGreen {
+                background-color: green;
+            }
+        
+        </style>
+    </head>
+    <body>
+        <h1>
+            Circles
+        </h1>
+
+        <button class="js-btn-change-color">
+            Change color
+        </button>
+
+        <label>
+            Dimension
+        </label>
+        <input type="number" value="50" class="js-input-dimension">
+
+        <hr>
+
+        <div class="circle js-circle"></div>
+        <div class="circle js-circle"></div>
+        <div class="circle js-circle"></div>
+        <div class="circle js-circle"></div>
+        <div class="circle js-circle"></div>
+        <div class="circle js-circle"></div>
+        <div class="circle js-circle"></div>
+        <div class="circle js-circle"></div>
+        <div class="circle js-circle"></div>
+        <div class="circle js-circle"></div>
+        <div class="circle js-circle"></div>
+        <div class="circle js-circle"></div>
+
+        <script>
+            // btn change color code 
+            var btnChangeColor = document.querySelector(".js-btn-change-color");
+            var circleEls = document.querySelectorAll(".js-circle");
+            
+            btnChangeColor.addEventListener("click", function() {
+                for (var i = 0; i < circleEls.length; i++ ) {
+                    circleEls[i].classList.add("circleGreen");
+                }
+            });
+
+            // dimension change
+            var dimensionEl = document.querySelector(".js-input-dimension");
+            dimensionEl.addEventListener("change", function() {
+                for (var i = 0; i < circleEls.length; i++ ) {
+                    circleEls[i].style.width = dimensionEl.value + "px";
+                    circleEls[i].style.height = dimensionEl.value + "px";
+                }
+            })
+        </script>
+    </body>
+</html>
