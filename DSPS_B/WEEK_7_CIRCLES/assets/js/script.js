@@ -1,23 +1,18 @@
-var inputUserEl = document.querySelector(".js-input-u");
-var inputPassEl = document.querySelector(".js-input-p");
-var btnEl = document.querySelector(".js-btn-login");
-var loginFormEl = document.querySelector(".js-login-form");
-var welcomeEl = document.querySelector(".js-welcome");
-var forbiddenEl = document.querySelector(".js-forbidden");
-var attempts = 3
+var buttonEl = document.querySelector(".js-button-add");
 
-btnEl.addEventListener("click", function() {
-    if (inputUserEl.value == "USER123" && inputPassEl.value == "PASS123") {
-        // loginFormEl.classList.add("hidden");
-        document.body.removeChild(loginFormEl);
-        welcomeEl.classList.remove("hidden");
-    } else {
-        attempts--;
+var countShreks = 0;
+buttonEl.addEventListener("click", function() {
+    // Add 1 shrek
+    countShreks++;
 
-        if (attempts == 0) {
-            loginFormEl.classList.add("hidden");
-            forbiddenEl.classList.remove("hidden");
-        }
-        console.log(attempts);
-    }
+    // Create a shrek element 
+    var shrekEl = document.createElement("div"); // <div></div>
+    shrekEl.classList.add("shrek"); // <div class="shrek"></div>
+    shrekEl.innerHTML = countShreks; // <div class="shrek">1</div>
+    shrekEl.dataset.numberShrek = countShreks; // <div class="shrek" data-number-shrek="1">1</div>
+    shrekEl.addEventListener("click", function() {
+        console.log("Hello I am number " + this.dataset.numberShrek);
+    });
+
+    document.querySelector(".js-field").appendChild(shrekEl);
 });
