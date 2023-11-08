@@ -8,6 +8,14 @@
             .hidden {
                 display: none;
             }
+
+            .green {
+                background-color: green;
+            }
+
+            .red {
+                background-color: red;
+            }
         </style>
     </head>
     <body>
@@ -16,37 +24,27 @@
             <h1>
                 Authentication
             </h1>
-            <p>
-                Psssst, there is one user USER123 with the pass PASS123 <br>
-                User got 3 attempts otherwise -> not Welcome <br>
-                When correct -> show welcome
-            </p>
-    
+
             <label>
                 U:
             </label>
-            <input type="text" class="js-input-u" />
+            <input type="text" class="js-input-user">
+
+            <br>
     
             <label>
-                p:
+                P:
             </label>
-            <input type="password" class="js-input-p" />
+            <input type="password" class="js-input-pass">
     
-            <button class="js-btn-login">
+            <button class="js-button-login">
                 Login
             </button>
         </div>
 
-        <!-- Welcome block -->
-        <div class="js-welcome hidden">
-            Welcome
+        <div class="js-status"> 
         </div>
-
-        <!-- Forbidden block -->
-        <div class="js-forbidden hidden">
-            You can not access our website
-        </div>
-
+        
         <script src="./assets/js/script.js">
         </script>
     </body>

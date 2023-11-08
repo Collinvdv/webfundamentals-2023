@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .playground {
+                background-color: burlywood;
+                padding: 30px;
+                border: 1px solid black;
+                border-radius: 20px;
+                margin-top: 25px;
+            }
+
+            button {
+                width: 100%;
+                padding: 10px;
+                background-color: greenyellow;
+                color: white;
+                border-color: black;
+            }
+
+            button:hover {
+                cursor: pointer;
+            }
+
+            .shrek {
+                background-color: greenyellow;
+                height: 50px;
+                width: 50px;
+                border-radius: 100%;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Shrek
+        </h1>
+        <button class="js-button-add">
+            Add shrek
+        </button>
+
+        <div class="playground js-playground">
+        </div>
+
+        <script>
+            var buttonEl = document.querySelector(".js-button-add");
+            var playgroundEl = document.querySelector(".js-playground");
+
+            var nbrOfShreks = 0;
+            buttonEl.addEventListener("click", function() {
+                // Add shrek element
+                nbrOfShreks++;
+                var shrekEl = document.createElement("div"); // <div></div>
+                shrekEl.classList.add("shrek")// <div class="shrek"></div>
+                shrekEl.classList.add("js-shrek")// <div class="shrek"></div>
+                shrekEl.innerHTML = nbrOfShreks;
+                shrekEl.addEventListener("mouseover", function() {
+                    console.log("You touched nbr " + this.innerHTML);
+                });
+
+                // Add shrek to the playground
+                playgroundEl.appendChild(shrekEl);
+            });
+
+
+
+        </script>
+    </body>
+</html>
