@@ -44,15 +44,16 @@ h1 {
 }
 
 .message-row {
-    display: flex
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .message-bot {
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 .message {
-    padding: 10px; 
-    background-color: blue;
+    padding: 10px 20px; 
+    background-color: lightblue;
     border-radius: 20px;
     margin-bottom: 20px;
     display: inline-block;
@@ -60,5 +61,5 @@ h1 {
 }
 
 .message-bot .message {
-    background-color: green;
+    background-color: lightcoral;
 }
