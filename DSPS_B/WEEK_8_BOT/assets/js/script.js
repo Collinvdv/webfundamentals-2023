@@ -1,0 +1,1 @@
+console.log("ext script is loaded");
