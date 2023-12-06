@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+           body {
+            background-color: #26006e;
+           }
+
+           h1, .winner {
+            text-align: center;
+            color: white;
+           }
+
+           .hands {
+            display: flex;
+            justify-content: center;
+           }
+
+           .hand {
+            opacity: 0.5;
+           }
+
+           .hand:hover {
+            opacity: 1;
+            cursor: pointer;
+           }
+
+           .hidden {
+            display: none;
+           }
+        </style>
+    </head>
+    <body>
+        <!-- Step 1 -->
+        <div class="step1 js-step1">
+            <h1>
+                Rock, paper and scissors
+            </h1>
+
+            <div class="hands">
+                <img class="hand js-hand" data-hand="paper" src="./images/paper.png" alt="paper hand">
+                <img class="hand js-hand" data-hand="rock" src="./images/rock.png" alt="rock hand">
+                <img class="hand js-hand" data-hand="scissors" src="./images/scissors.png" alt="scissors hand">
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step2 js-step2 hidden">
+            <h1>
+                Timer is tickint, <span class="js-seconds">3</span> seconds left
+            </h1>
+
+            <div class="hands js-hands">
+            </div>
+
+            <div class="winner js-winner">
+            </div>
+        </div>
+
+        <script>
+            // Hands 
+            var handEls = document.querySelectorAll(".js-hand");
+            var hands = ["rock", "paper", "scissors"];
+
+            for(var i = 0; i < handEls.length; i++) {
+                handEls[i].addEventListener("click", function() {
+                    var userChoice = this.dataset.hand;
+
+                    // Hide step 1 and show step 2
+                    document.querySelector(".js-step1").classList.add("hidden");
+                    document.querySelector(".js-step2").classList.remove("hidden");
+
+                    // Timer 
+                    var seconds = 3;
+                    var stopwatch = setInterval(function() {
+                        // changing the seconds 
+                        seconds--;
+                        document.querySelector(".js-seconds").innerHTML = seconds;
+
+                        // when seconds reach 0, stop the counter and show the computer choice
+                        if (seconds == 0) {
+                            // stop the watch
+                            clearInterval(stopwatch);
+
+                            // show computer hand
+                            var randomHand = Math.floor(hands.length * Math.random());
+                            var computerChoice = hands[randomHand];
+                            addHand(computerChoice);
+
+                            // Show how the winner is
+                            declareWinner(userChoice, computerChoice);
+                        }
+                    }, 1000);
+
+                    // Create the user choice 
+                    addHand(userChoice);
+                });
+            }
+
+            function declareWinner(userChoice, computerChoice) {
+                if (userChoice == computerChoice) {
+                    document.querySelector(".js-winner").innerHTML = "draw";
+                } else if (
+                    (userChoice == "paper" && computerChoice == "rock") ||
+                    (userChoice == "rock" && computerChoice == "scissors") ||
+                    (userChoice == "scissors" && computerChoice == "paper") 
+                ) {
+                    document.querySelector(".js-winner").innerHTML = "user has won";
+                } else {
+                    document.querySelector(".js-winner").innerHTML = "computer has won";
+                }
+            }
+            function addHand(hand) {
+                var imgEl = document.createElement("img"); // <img />
+                imgEl.src = "./images/" + hand + ".png"; // <img src="./images/paper.png" />
+                document.querySelector(".js-hands").appendChild(imgEl);
+            }
+        </script>
+    </body>
+</html>
