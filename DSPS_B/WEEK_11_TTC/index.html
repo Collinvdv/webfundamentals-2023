@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                background-color: lightblue;
+            }
+
+            .title {
+                text-align: center;
+            }
+
+            .scoreboard {
+                display: flex;
+                justify-content: center;
+            }
+
+            .player {
+                margin: 20px;
+                text-align: center;
+            }
+
+            .playerGreen {
+                color: green;
+            }
+
+            .playerRed {
+                color: red;
+            }
+
+            .cell {
+                width: 75px;
+                height: 75px;
+                border: 1px solid black;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .row {
+                display: flex;
+            }
+
+            .game {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Title -->
+        <h1 class="title">
+            Tic tac toe
+        </h1>
+
+        <!-- Scoreboard -->
+        <div class="scoreboard">
+            <!-- Player X -->
+            <h2 class="player playerGreen">
+                Player X <br>
+                <span class="js-score-x"> 0 </span>
+            </h2>
+
+            <!-- Player O -->
+            <h2 class="player playerRed">
+                Player O <br>
+                <span class="js-score-o"> 0 </span>
+            </h2>
+        </div>
+
+        <!-- Game -->
+        <div class="game">
+            <!-- Row -->
+            <div class="row">
+                <div class="cell js-cell js-cell1"></div>
+                <div class="cell js-cell js-cell2"></div>
+                <div class="cell js-cell js-cell3"></div>
+            </div>
+
+            <!-- Row -->
+            <div class="row">
+                <div class="cell js-cell js-cell4"></div>
+                <div class="cell js-cell js-cell5"></div>
+                <div class="cell js-cell js-cell6"></div>
+            </div>
+
+            <!-- Row -->
+            <div class="row">
+                <div class="cell js-cell js-cell7"></div>
+                <div class="cell js-cell js-cell8"></div>
+                <div class="cell js-cell js-cell9"></div>
+            </div>
+        </div>
+
+        <script>
+            // Get all the cells and tell them they need to listen to a click event
+            var cellEls = document.querySelectorAll(".js-cell");
+            var amountOfClicks = 0;
+            var playerOpoints = 0;
+            var playerXpoints = 0;
+
+            for (var i = 0; i < cellEls.length; i++) {
+                cellEls[i].addEventListener("click", function() {
+                    // First check if is empty, otherwhise don't do anything at all
+                    if (this.innerHTML == "") {
+                        amountOfClicks++;
+    
+                        // constantly switch numbers
+                        if (amountOfClicks % 2 != 0) {
+                            this.innerHTML = "X";
+                            checkWinner("X");
+                        } else {
+                            this.innerHTML = "O";
+                            checkWinner("O");
+                        }
+                    } else {
+                        alert("this is cell is allready filled in");
+                    }
+                });
+            }
+
+            function resetGame() {
+                setTimeout(function() {
+                    // make all the cells empty
+                    for (var i = 0; i < cellEls.length; i++) {
+                        cellEls[i].innerHTML = "";
+                    }
+
+                    // Reset the amount of clicks, so you can start again
+                    amountOfClicks = 0;
+                }, 1000);
+            }
+
+            function checkWinner(char) {
+
+                var cell1 = document.querySelector(".js-cell1").innerHTML;
+                var cell2 = document.querySelector(".js-cell2").innerHTML;
+                var cell3 = document.querySelector(".js-cell3").innerHTML;
+                var cell4 = document.querySelector(".js-cell4").innerHTML;
+                var cell5 = document.querySelector(".js-cell5").innerHTML;
+                var cell6 = document.querySelector(".js-cell6").innerHTML;
+                var cell7 = document.querySelector(".js-cell7").innerHTML;
+                var cell8 = document.querySelector(".js-cell8").innerHTML;
+                var cell9 = document.querySelector(".js-cell9").innerHTML;
+
+                if (
+                    // horizontal
+                    (cell1 == char && cell2 == char && cell3 == char) ||
+                    (cell4 == char && cell5 == char && cell6 == char) ||
+                    (cell7 == char && cell8 == char && cell9 == char) ||
+
+                    // vertical
+                    (cell1 == char && cell4 == char && cell7 == char) ||
+                    (cell2 == char && cell5 == char && cell8 == char) ||
+                    (cell3 == char && cell6 == char && cell9 == char) ||
+
+                    // diagonal
+                    (cell1 == char && cell5 == char && cell9 == char) ||
+                    (cell3 == char && cell5 == char && cell7 == char)
+                ) {
+                    if (char == "O") {
+                        playerOpoints++;
+                        document.querySelector(".js-score-o").innerHTML = playerOpoints;
+                        resetGame()
+                    } else {
+                        playerXpoints++;
+                        document.querySelector(".js-score-x").innerHTML = playerXpoints;
+                        resetGame();
+                    }
+                }
+
+                if (amountOfClicks == 9) resetGame();
+            }
+        </script>
+    </body>
+</html>

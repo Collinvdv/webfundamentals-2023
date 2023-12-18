@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                background-color: lightblue;
+            }
+
+            .title {
+                text-align: center;
+            }
+
+            .scoreboard {
+                display: flex;
+                justify-content: center;
+            }
+
+            .player {
+                text-align: center;
+                margin: 0 20px;
+            }
+
+            .player1 {
+                color: green;
+            }
+
+            .player2 {
+                color: red;
+            }
+
+            .board {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 30px;
+            }
+
+            .row {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .cell {
+                padding: 20px;
+                height: 50px; 
+                width: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Title -->
+        <h1 class="title">
+            Tic Tac Toe
+        </h1>
+
+        <!-- Scoreboard -->
+        <div class="scoreboard">
+            <h2 class="player player1">
+                Player X <br>
+                <span class="js-scoreboard-x">0</span>
+            </h2>
+    
+            <h2 class="player player2">
+                Player O <br>
+                <span class="js-scoreboard-o">0</span>
+            </h2>
+        </div>
+
+        <!-- Board -->
+        <div class="board">
+            <!-- Row 1 -->
+            <div class="row">
+                <div class="cell js-cell js-cell1"></div>
+                <div class="cell js-cell js-cell2"></div>
+                <div class="cell js-cell js-cell3"></div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="row">
+                <div class="cell js-cell js-cell4"></div>
+                <div class="cell js-cell js-cell5"></div>
+                <div class="cell js-cell js-cell6"></div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="row">
+                <div class="cell js-cell js-cell7"></div>
+                <div class="cell js-cell js-cell8"></div>
+                <div class="cell js-cell js-cell9"></div>
+            </div>
+        </div>
+
+        <script>
+            // Fetch all the cells add and event and change the inner html to X or O 
+            var cellEls = document.querySelectorAll(".js-cell");
+            var amountOfClicks = 0;
+            var playerXScore = 0;
+            var playerOScore = 0;
+
+            for(var i = 0; i < cellEls.length; i++) {
+                cellEls[i].addEventListener("click", function() {
+                    if (this.innerHTML == "" ) {
+                        // Always add 1 to the user click, so we can always change X & O
+                        amountOfClicks++;
+    
+                        if (amountOfClicks % 2 == 0) {
+                            this.innerHTML = "O";
+                            checkWinner("O");
+                        } else {
+                            this.innerHTML = "X";
+                            checkWinner("X");
+                        }
+                    }
+
+                });
+            }
+
+            function checkWinner(char) {
+                var cell1 = document.querySelector(".js-cell1").innerHTML;
+                var cell2 = document.querySelector(".js-cell2").innerHTML;
+                var cell3 = document.querySelector(".js-cell3").innerHTML;
+                var cell4 = document.querySelector(".js-cell4").innerHTML;
+                var cell5 = document.querySelector(".js-cell5").innerHTML;
+                var cell6 = document.querySelector(".js-cell6").innerHTML;
+                var cell7 = document.querySelector(".js-cell7").innerHTML;
+                var cell8 = document.querySelector(".js-cell8").innerHTML;
+                var cell9 = document.querySelector(".js-cell9").innerHTML;
+
+                if (
+                    // Horizontal
+                    (cell1 == char && cell2 == char && cell3 == char) || 
+                    (cell4 == char && cell5 == char && cell6 == char) || 
+                    (cell7 == char && cell8 == char && cell9 == char) ||
+
+                    // Vertical
+                    (cell1 == char && cell4 == char && cell7 == char) || 
+                    (cell2 == char && cell5 == char && cell8 == char) || 
+                    (cell3 == char && cell6 == char && cell9 == char) ||
+
+                    // Diagonals 
+                    (cell1 == char && cell5 == char && cell9 == char) || 
+                    (cell3 == char && cell5 == char && cell7 == char) 
+                ) {
+                    // Add score +1
+                    if (char == "O") {
+                        playerOScore++;
+                        document.querySelector(".js-scoreboard-o").innerHTML = playerOScore;
+                        console.log(playerOScore);
+                    } else {
+                        playerXScore++;
+                        document.querySelector(".js-scoreboard-x").innerHTML = playerXScore;
+                    }
+
+                    // Finish game
+
+                    resetGame();
+                }
+
+                // If they have clicked 9 times then we got a draw
+                if (amountOfClicks == 9) {
+                    resetGame();
+                }
+            }
+
+            function resetGame() {
+                setTimeout(function() {
+                    // remove the x or o from the html
+                    for(var i = 1; i <= 9; i++) {
+                        document.querySelector(".js-cell" + i).innerHTML = "";
+                    }
+
+                    // Reset amount of clicks
+                    amountOfClicks = 0;
+                }, 1000);
+            }
+        </script>
+    </body>
+</html>
