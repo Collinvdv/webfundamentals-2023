@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .cards {
+                display: flex;
+                margin-bottom: 20px;
+            }
+
+            .card {
+                border: 2px solid rebeccapurple;
+                color: rebeccapurple;
+                padding: 40px 40px;
+                font-size: 24px;
+                margin-right: 20px;
+                border-radius: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Blackjack
+        </h1>
+
+        <p>
+            Player should have at least 16, before they can stop
+        </p>
+
+        <div class="game js-game">
+            <!-- Player cards -->
+            <h2>Player 1: total <span class="js-player-total">0</span></h2>
+            <div class="cards js-player-cards">
+            </div>
+    
+            <!-- Buttons -->
+            <div class="js-buttons">
+                <button class="js-button-add">
+                    Ask new card
+                </button>
+                <button class="js-button-stop" disabled>
+                    Stop
+                </button>
+            </div>
+
+            <!-- Computer cards -->
+            <h2>Computer: total <span class="js-computer-total">0</span></h2>
+            <div class="cards js-computer-cards">
+            </div>
+        </div>
+
+
+        <script>
+            // Variables 
+            var buttonAddEl = document.querySelector(".js-button-add");
+            var buttonStopEl = document.querySelector(".js-button-stop");
+            var userCardsEl = document.querySelector(".js-player-cards");
+            var userTotalEl = document.querySelector(".js-player-total");
+            var computerCardEl = document.querySelector(".js-computer-cards");
+            var computerTotalEl = document.querySelector(".js-computer-total");
+            var gameEl = document.querySelector(".js-game");
+
+            var userScore = 0;
+            var computerScore = 0;
+
+            // User actions
+            buttonAddEl.addEventListener("click", function() {
+                // Random number
+                var randomCard = Math.ceil(Math.random() * 13);
+
+                // Create a card element
+                var cardEl = document.createElement("div");
+                cardEl.innerHTML = randomCard; 
+                cardEl.classList.add("card"); // <div class="card">10</div>
+
+                // Add the element in to the users cards
+                userCardsEl.appendChild(cardEl);
+
+                // Change the user score
+                userScore += randomCard;
+                userTotalEl.innerHTML = userScore;
+
+                // If score is heigher than 16, disable should be removed from stop button
+                if (userScore >= 16) buttonStopEl.removeAttribute("disabled");
+
+                // If it is heigher than 21, computer wins 
+                if (userScore > 21) {
+                    setTimeout(function() {
+                        gameEl.innerHTML = "Heigher than 21, you lost";
+                    }, 1000);
+                }
+            });
+
+            // 
+            buttonStopEl.addEventListener("click", function() {
+                var interval = setInterval(function() {
+                    // Random number
+                    var randomCard = Math.ceil(Math.random() * 13);
+
+                    // Create a card element
+                    var cardEl = document.createElement("div");
+                    cardEl.innerHTML = randomCard; 
+                    cardEl.classList.add("card"); // <div class="card">10</div>
+
+                    // Add the element in to the users cards
+                    computerCardEl.appendChild(cardEl);
+
+                    // Change the user score
+                    computerScore += randomCard;
+                    computerTotalEl.innerHTML = computerScore;
+
+                    // If score is heigher than 16, disable should be removed from stop button
+                    if (computerScore > userScore) {
+                        setTimeout(function() {
+                            clearInterval(interval);
+                            gameEl.innerHTML = "Computer has won bcs computer score is heigher than user";
+                        }, 1000);
+                    }
+
+                    // If it is heigher than 21, computer wins 
+                    if (computerScore > 21) {
+                        setTimeout(function() {
+                            clearInterval(interval);
+                            gameEl.innerHTML = "Computer has heigher than 21, you won";
+                        }, 1000);
+                    }
+                }, 1000);
+            });
+        </script>
+    </body>
+</html>
