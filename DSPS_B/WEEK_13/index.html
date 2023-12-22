@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .cards {
+                display: flex;
+                margin-bottom: 20px;
+            }
+
+            .card {
+                border: 2px solid rebeccapurple;
+                color: rebeccapurple;
+                padding: 40px 40px;
+                font-size: 24px;
+                margin-right: 20px;
+                border-radius: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Blackjack
+        </h1>
+
+        <p>
+            Player should have at least 16, before they can stop
+        </p>
+
+        <div class="game js-game">
+            <!-- Player cards -->
+            <h2>Player 1: total <span class="js-player-total">0</span></h2>
+            <div class="cards js-player-cards">
+            </div>
+    
+            <!-- Buttons -->
+            <div class="js-buttons">
+                <button class="js-button-add">
+                    Ask new card
+                </button>
+                <button class="js-button-stop" disabled>
+                    Stop
+                </button>
+            </div>
+
+            <!-- Computer cards -->
+            <h2>Computer: total <span class="js-computer-total">0</span></h2>
+            <div class="cards js-computer-cards">
+            </div>
+        </div>
+
+
+        <script>
+            // Html linking variables 
+            var buttonAddEl = document.querySelector(".js-button-add");
+            var buttonStopEl = document.querySelector(".js-button-stop");
+            var userCardsEl = document.querySelector(".js-player-cards");
+            var userTotalEl = document.querySelector(".js-player-total");
+            var computerCardsEl = document.querySelector(".js-computer-cards");
+            var computerTotalEl = document.querySelector(".js-computer-total");
+            var gameEl = document.querySelector(".js-game");
+
+            // Logic variables 
+            var userScore = 0;
+            var computerScore = 0;
+
+            // User logic
+            buttonAddEl.addEventListener("click", function() {
+                // Ask a random card 
+                var randomCard = Math.ceil(Math.random() * 13);
+
+                // create the card element
+                var cardEl = document.createElement("div"); // <div></div>
+                cardEl.innerHTML = randomCard; // <div>11</div>
+                cardEl.classList.add("card"); // <div class="card">11</div>
+                userCardsEl.appendChild(cardEl);
+
+                // change user score
+                userScore += randomCard;
+                userTotalEl.innerHTML = userScore;
+
+                if (userScore >= 16) buttonStopEl.removeAttribute("disabled");
+
+                if (userScore > 21) {
+                    setTimeout(function() {
+                        gameEl.innerHTML = "user has heigher than 21, computer won the game";
+                    }, 2000)
+                }
+            });
+
+            // Computer logic
+            buttonStopEl.addEventListener("click", function() {
+                var counter = setInterval(function() {
+                    // Ask a random card 
+                    var randomCard = Math.ceil(Math.random() * 13);
+
+                    // create the card element
+                    var cardEl = document.createElement("div"); // <div></div>
+                    cardEl.innerHTML = randomCard; // <div>11</div>
+                    cardEl.classList.add("card"); // <div class="card">11</div>
+                    computerCardsEl.appendChild(cardEl);
+
+                    // change user score
+                    computerScore += randomCard;
+                    computerTotalEl.innerHTML = computerScore;
+
+                    if (computerScore > 21) {
+                        clearInterval(counter);
+
+                        setTimeout(function() {
+                            gameEl.innerHTML = "pc has heigher than 21, user won the game";
+                        }, 2000)
+                    }
+
+                    if (computerScore > userScore && computerScore <= 21) {
+                        clearInterval(counter);
+
+                        setTimeout(function() {
+                            gameEl.innerHTML = "pc has heigher than user, pc won the game";
+                        }, 2000)
+                    }
+
+                }, 1000);
+            })
+        </script>
+    </body>
+</html>
